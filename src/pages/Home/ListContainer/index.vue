@@ -4,21 +4,22 @@
     <div class="sortList clearfix">
       <div class="center">
         <!--banner轮播-->
-        <div class="swiper-container" ref="banner">
+        <SliderLoop :bannerList="bannerList"></SliderLoop>
+        <!-- <div class="swiper-container" ref="banner">
           <div class="swiper-wrapper">
             <div class="swiper-slide" v-for="(banner, index) in bannerList" :key="banner.id">
               <img :src="banner.imgUrl" />
             </div>
+            
           </div>
-          <!-- 如果需要分页器 -->
           <div class="swiper-pagination"></div>
 
-          <!-- 如果需要导航按钮 -->
           <div class="swiper-button-prev"></div>
           <div class="swiper-button-next"></div>
-        </div>
+        </div> --> 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
       </div>
-
       <div class="right">
         <div class="news">
           <h4>
@@ -105,39 +106,38 @@
 <script>
 import { mapGetters } from "vuex";
 //swiper引入js和css
-import Swiper from "swiper";
-import "swiper/css/swiper.min.css";
+// import Swiper from "swiper";
+// import "swiper/css/swiper.min.css";
 
 export default {
   name: "ListContainer",
   mounted() {
     this.getBannerList();
     //为什么Swiper在实例的时候放在mounted当中 静态数据是可以的
-    //而动态数据就不行
-    //静态数据一上来就加载完成了，我们页面的结构也就形成了，然后创建swiper 理所当然就可以
-    //动态数据 是我们一步请求的，mounted里面发请求之后 立即实例化swiper，此时请求的数据不一定回来
+    //动态数据就不行
+    // 静态数据一上来就加载完成了，我们页面的结构也就形成了，然后创建swiper 理所当然就可以
+    //动态数据 是我们异步请求的，mounted里面发请求完之后 立即实例化swiper,此时请求的数据不一定回来
     //而我们的页面结构是依赖动态的数据进行创建的
-
-    //   new Swiper (this.$refs.banner,{
-    //   // direction: 'vertical', // 垂直切换选项
+    // new Swiper(this.$refs.banner, {
+    //   // direction: "vertical", // 垂直切换选项
     //   // loop: true, // 循环模式选项
 
     //   // 如果需要分页器
     //   pagination: {
-    //     el: '.swiper-pagination',
+    //     el: ".swiper-pagination"
     //   },
 
     //   // 如果需要前进后退按钮
     //   navigation: {
-    //     nextEl: '.swiper-button-next',
-    //     prevEl: '.swiper-button-prev',
-    //   },
+    //     nextEl: ".swiper-button-next",
+    //     prevEl: ".swiper-button-prev"
+    //   }
 
     //   // 如果需要滚动条
-    //   scrollbar: {
-    //     el: '.swiper-scrollbar',
-    //   },
-    // })
+    //   // scrollbar: {
+    //   //   el: ".swiper-scrollbar"
+    //   // }
+    // });
   },
   methods: {
     getBannerList() {
@@ -152,38 +152,42 @@ export default {
     // })
     ...mapGetters(["bannerList"])
   },
-  watch: {
-    bannerList: {
-      handler() {
-        //Vue.nextTick或者vm.$nextTick是一样的功能
-        //在最近的一次dom更新之后执行nextTick里面传的回调函数
-        this.$nextTick(() => {
-          new Swiper(this.$refs.banner, {
-            // direction: "vertical", // 垂直切换选项
-            autoplay:true,
-            loop: true, // 循环模式选项
+  // watch: {
+  //   bannerList: {
+  //     handler() {
+  //       //Vue.nextTick或者vm.$nextTick是一样的功能
+  //       //在最近的一次dom更新之后执行nextTick里面传的回调函数
+  //       this.$nextTick(() => {
+  //         new Swiper(this.$refs.banner, {
+  //           // direction: "vertical", // 垂直切换选项
+  //           // autoplay:true,//等同于以下设置
+  //           loop: true, // 循环模式选项
 
-            // 如果需要分页器
-            pagination: {
-              el: ".swiper-pagination"
-            },
+  //           // 如果需要分页器
+  //           pagination: {
+  //             el: ".swiper-pagination"
+  //           },
 
-            // 如果需要前进后退按钮
-            navigation: {
-              nextEl: ".swiper-button-next",
-              prevEl: ".swiper-button-prev"
-            },
+  //           // 如果需要前进后退按钮
+  //           navigation: {
+  //             nextEl: ".swiper-button-next",
+  //             prevEl: ".swiper-button-prev"
+  //           }
 
-            // 如果需要滚动条
-            scrollbar: {
-              el: ".swiper-scrollbar"
-            }
-          });
-        });
-      }
-    },
-    immediate: true //立即执行，在最近dom更新之前就会执行
-  }
+  //           // 如果需要滚动条
+  //           // scrollbar: {
+  //           //   el: ".swiper-scrollbar"
+  //           // }
+  //         });
+  //       });
+  //     },
+  //     immediate:true //立即执行，在最近dom更新之前就会执行
+  //   },
+
+
+
+    
+  // }
 };
 </script>
 
@@ -258,7 +262,7 @@ export default {
           width: 25%;
 
           .list-item {
-            background-image: url(./images/icons.png);
+            background-image: url(../../../assets/images/icons.png);
             width: 61px;
             height: 40px;
             display: block;

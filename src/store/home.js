@@ -2,8 +2,8 @@ import {reqCategoryList,reqBannerList,reqFloorList} from '@/api'
 
 const state = {
   categoryList : [],
-  bannerList: [],
-  floorList: []
+  bannerList:[],
+  floorList:[]
 }
 const mutations = {
   //直接修改数据

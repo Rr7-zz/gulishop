@@ -40,14 +40,11 @@
 
 <script>
 export default {
-  name: "Brand",
-  data() {
-    return {};
-  },
+  name: "Brand"
 };
 </script>
 
-<style scoped lang="less">
+<style lang="less" scoped>
 .brand {
   margin: 10px 0;
 

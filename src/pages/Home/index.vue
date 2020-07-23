@@ -11,22 +11,22 @@
 </template>
 
 <script>
-import ListContainer from "./ListContainer";
-import Recommend from "./Recommend";
-import Brand from "./Brand";
-import Floor from "./Floor";
-import Like from "./Like";
-import Rank from "./Rank";
+import ListContainer from './ListContainer'
+import Recommend from './Recommend'
+import Rank from './Rank'
+import Like from './Like'
+import Floor from './Floor'
+import Brand from './Brand'
 import { mapState } from 'vuex'
 export default {
-  name: "Home",
-  components: {
+  name: 'Home',
+  components:{
     ListContainer,
     Recommend,
-    Brand,
-    Floor,
-    Like,
     Rank,
+    Like,
+    Floor,
+    Brand
   },
   mounted(){
     this.getFloorList()
@@ -41,8 +41,9 @@ export default {
       floorList: state => state.home.floorList
     })
   }
-
-};
+}
 </script>
 
-<style scoped lang="less"></style>
+<style lang="less" scoped>
+
+</style>

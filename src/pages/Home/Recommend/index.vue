@@ -28,14 +28,11 @@
 
 <script>
 export default {
-  name: "Recommend",
-  data() {
-    return {};
-  },
+  name: "Recommend"
 };
 </script>
 
-<style scoped lang="less">
+<style lang="less" scoped>
 .today-recommend {
   .py-container {
     width: 1200px;
